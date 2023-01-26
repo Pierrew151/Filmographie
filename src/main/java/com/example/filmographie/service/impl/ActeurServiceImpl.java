@@ -20,7 +20,6 @@ public class ActeurServiceImpl implements ActeurService {
         listActeur.add(new Acteur(1, "jean1", "jean1"));
         listActeur.add(new Acteur(2, "jean2", "jean2"));
         listActeur.add(new Acteur(3, "jean3", "jean3"));
-
         mapActeur = new HashMap<>();
         listActeur.forEach(m -> mapActeur.put(m.getId(), m));
 
