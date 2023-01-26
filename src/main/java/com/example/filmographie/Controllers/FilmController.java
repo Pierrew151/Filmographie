@@ -6,7 +6,10 @@ import com.example.filmographie.bo.Film;
 import com.example.filmographie.bo.Realisateur;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -14,6 +17,11 @@ import java.util.List;
 
 @Controller
 public class FilmController {
+
+    @ModelAttribute("films")
+    public List<Film> getPersonnes(){
+        return new ArrayList<>();
+    }
 
     @RequestMapping("/film/ajout")
     public String ajoutFilm(Model model){
@@ -30,6 +38,35 @@ public class FilmController {
 
         Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50,"MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, acteurList, categorie);
         model.addAttribute("film", film);
+
+        return "films/ajoutFilm";
+    }
+
+    @RequestMapping("/movie/edit")
+    public String movieEdit(Model model){
+        Realisateur realisateur = new Realisateur(1, "mark", "mark");
+        Acteur acteur1 = new Acteur(1, "jean", "jean");
+        Acteur acteur2 = new Acteur(2, "jean1", "jean1");
+        Acteur acteur3 = new Acteur(3, "jean2", "jean2");
+        List<Acteur> acteurList = new ArrayList<>();
+        acteurList.add(acteur1);
+        acteurList.add(acteur2);
+        acteurList.add(acteur3);
+
+        Categorie categorie = new Categorie(1, "test");
+
+        Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50,"MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, acteurList, categorie);
+        model.addAttribute("movie", film);
+
+        return "edit-movie";
+    }
+
+    @PostMapping("/film/ajout")
+    public String traitFormulaire( @ModelAttribute("film") Film film,
+                                   @ModelAttribute("films") List<Film> films
+    ) {
+
+        films.add(film);
 
         return "films/ajoutFilm";
     }
