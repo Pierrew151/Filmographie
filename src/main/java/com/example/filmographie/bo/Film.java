@@ -13,4 +13,14 @@ public class Film {
     private List<Acteur> acteurs;
     private Categorie categorie;
 
+    public Film(int id, String titre, Date dateSortie, int duree, String description, Realisateur realisateur, List<Acteur> acteurs, Categorie categorie) {
+        this.id = id;
+        this.titre = titre;
+        this.dateSortie = dateSortie;
+        this.duree = duree;
+        this.description = description;
+        this.realisateur = realisateur;
+        this.acteurs = acteurs;
+        this.categorie = categorie;
+    }
 }
