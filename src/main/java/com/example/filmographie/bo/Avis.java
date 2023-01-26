@@ -1,7 +1,14 @@
 package com.example.filmographie.bo;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Avis {
+    @Id
+    @GeneratedValue
     private Integer id;
+
+    @ManyToOne
     private Film film;
     private String avis;
     private int note;
@@ -11,6 +18,10 @@ public class Avis {
         this.film = film;
         this.avis = avis;
         this.note = note;
+    }
+
+    public Avis() {
+
     }
 
     public Integer getId() {

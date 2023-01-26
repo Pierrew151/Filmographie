@@ -1,16 +1,25 @@
 package com.example.filmographie.bo;
 
+import jakarta.persistence.*;
+
 import java.sql.Date;
 import java.util.List;
 
+@Entity
 public class Film {
+    @Id
+    @GeneratedValue
     private Integer id;
     private String titre;
     private Date dateSortie;
     private int duree;
     private String description;
+    @ManyToOne
     private Realisateur realisateur;
+
+    @ManyToMany
     private List<Acteur> acteurs;
+    @OneToOne
     private Categorie categorie;
 
     public Film(Integer id, String titre, Date dateSortie, int duree, String description, Realisateur realisateur, List<Acteur> acteurs, Categorie categorie) {
@@ -22,6 +31,10 @@ public class Film {
         this.realisateur = realisateur;
         this.acteurs = acteurs;
         this.categorie = categorie;
+    }
+
+    public Film() {
+
     }
 
     public Integer getId() {

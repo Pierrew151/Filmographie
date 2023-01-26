@@ -1,6 +1,13 @@
 package com.example.filmographie.bo;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class Personne {
+    @Id
+    @GeneratedValue
     private Integer id;
     private String nom;
     private String prenom;
@@ -9,6 +16,10 @@ public abstract class Personne {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
+    }
+
+    public Personne() {
+
     }
 
     public Integer getId() {

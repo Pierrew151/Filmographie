@@ -1,10 +1,19 @@
 package com.example.filmographie.bo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
 import java.util.List;
 
+@Entity
 public class Categorie {
+    @Id
+    @GeneratedValue
     private Integer id;
     private String nom;
+    @OneToMany
     private List<Film> films;
 
     public Categorie(Integer id, String nom, List<Film> films) {
@@ -16,6 +25,10 @@ public class Categorie {
     public Categorie(Integer id, String nom) {
         this.id = id;
         this.nom = nom;
+    }
+
+    public Categorie() {
+
     }
 
     public Integer getId() {

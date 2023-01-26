@@ -1,5 +1,8 @@
 package com.example.filmographie.bo;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Employe extends Personne{
     private String login;
     private String password;
@@ -10,6 +13,10 @@ public class Employe extends Personne{
         this.login = login;
         this.password = password;
         this.isAdmin = isAdmin;
+    }
+
+    public Employe() {
+        super();
     }
 
     public String getLogin() {
