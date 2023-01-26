@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 public class Film {
-    private int id;
+    private Integer id;
     private String titre;
     private Date dateSortie;
     private int duree;
@@ -13,7 +13,7 @@ public class Film {
     private List<Acteur> acteurs;
     private Categorie categorie;
 
-    public Film(int id, String titre, Date dateSortie, int duree, String description, Realisateur realisateur, List<Acteur> acteurs, Categorie categorie) {
+    public Film(Integer id, String titre, Date dateSortie, int duree, String description, Realisateur realisateur, List<Acteur> acteurs, Categorie categorie) {
         this.id = id;
         this.titre = titre;
         this.dateSortie = dateSortie;
@@ -24,11 +24,11 @@ public class Film {
         this.categorie = categorie;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

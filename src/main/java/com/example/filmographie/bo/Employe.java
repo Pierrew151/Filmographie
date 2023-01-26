@@ -5,7 +5,7 @@ public class Employe extends Personne{
     private String password;
     private boolean isAdmin;
 
-    public Employe(int id, String nom, String prenom, String login, String password, boolean isAdmin) {
+    public Employe(Integer id, String nom, String prenom, String login, String password, boolean isAdmin) {
         super(id, nom, prenom);
         this.login = login;
         this.password = password;

@@ -1,23 +1,23 @@
 package com.example.filmographie.bo;
 
 public class Avis {
-    private int id;
+    private Integer id;
     private Film film;
     private String avis;
     private int note;
 
-    public Avis(int id, Film film, String avis, int note) {
+    public Avis(Integer id, Film film, String avis, int note) {
         this.id = id;
         this.film = film;
         this.avis = avis;
         this.note = note;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
