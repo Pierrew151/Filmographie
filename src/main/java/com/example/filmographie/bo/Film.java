@@ -13,6 +13,7 @@ public class Film {
     private String titre;
     private Date dateSortie;
     private int duree;
+    private String image;
     private String description;
     @ManyToOne
     private Realisateur realisateur;
@@ -21,6 +22,14 @@ public class Film {
     private List<Acteur> acteurs;
     @ManyToOne
     private Categorie categorie;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Film(Integer id, String titre, Date dateSortie, int duree, String description, Realisateur realisateur, List<Acteur> acteurs, Categorie categorie) {
         this.id = id;
