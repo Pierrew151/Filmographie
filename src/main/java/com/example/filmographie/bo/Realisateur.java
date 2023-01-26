@@ -9,5 +9,11 @@ public class Realisateur extends Personne{
         super(id, nom, prenom);
     }
 
+    public List<Film> getFilms() {
+        return films;
+    }
 
+    public void setFilms(List<Film> films) {
+        this.films = films;
+    }
 }

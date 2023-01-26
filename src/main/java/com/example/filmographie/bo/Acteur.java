@@ -13,4 +13,12 @@ public class Acteur extends Personne{
     public Acteur(int id, String nom, String prenom) {
         super(id, nom, prenom);
     }
+
+    public List<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Film> films) {
+        this.films = films;
+    }
 }

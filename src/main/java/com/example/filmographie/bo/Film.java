@@ -23,4 +23,68 @@ public class Film {
         this.acteurs = acteurs;
         this.categorie = categorie;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public Date getDateSortie() {
+        return dateSortie;
+    }
+
+    public void setDateSortie(Date dateSortie) {
+        this.dateSortie = dateSortie;
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Realisateur getRealisateur() {
+        return realisateur;
+    }
+
+    public void setRealisateur(Realisateur realisateur) {
+        this.realisateur = realisateur;
+    }
+
+    public List<Acteur> getActeurs() {
+        return acteurs;
+    }
+
+    public void setActeurs(List<Acteur> acteurs) {
+        this.acteurs = acteurs;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
 }
