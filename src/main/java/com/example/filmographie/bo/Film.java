@@ -19,7 +19,7 @@ public class Film {
 
     @ManyToMany
     private List<Acteur> acteurs;
-    @OneToOne
+    @ManyToOne
     private Categorie categorie;
 
     public Film(Integer id, String titre, Date dateSortie, int duree, String description, Realisateur realisateur, List<Acteur> acteurs, Categorie categorie) {
