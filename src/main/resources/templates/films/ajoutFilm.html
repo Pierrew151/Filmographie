@@ -33,6 +33,21 @@
         <select th:field="*{categorie}" id="categorie" required>
           <option th:each="categorie: ${@categories}" th:value="${categorie.id}" th:text="${categorie.nom}"></option>
         </select>
+
+        <button type="submit">Ajouter</button>
       </form>
+
+
+
+
+      <h1>Liste des films :</h1>
+      <table>
+        <tr class="theader"><td>Titre</td><td>duree</td><td>description</td></tr>
+        <tr th:each="film: ${films}">
+          <td th:text="${film.titre}" />
+          <td th:text="${film.duree}" />
+          <td th:text="${film.description}"></td>
+        </tr>
+      </table>
   </body>
 </html>

@@ -6,7 +6,10 @@ import com.example.filmographie.bo.Film;
 import com.example.filmographie.bo.Realisateur;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -14,6 +17,11 @@ import java.util.List;
 
 @Controller
 public class FilmController {
+
+    @ModelAttribute("films")
+    public List<Film> getPersonnes(){
+        return new ArrayList<>();
+    }
 
     @RequestMapping("/film/ajout")
     public String ajoutFilm(Model model){
@@ -30,6 +38,18 @@ public class FilmController {
 
         Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50,"MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, acteurList, categorie);
         model.addAttribute("film", film);
+
+        return "films/ajoutFilm";
+    }
+
+
+
+    @PostMapping("/film/ajout")
+    public String traitFormulaire( @ModelAttribute("film") Film film,
+                                   @ModelAttribute("films") List<Film> films
+    ) {
+
+        films.add(film);
 
         return "films/ajoutFilm";
     }
