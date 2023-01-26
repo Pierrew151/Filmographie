@@ -42,7 +42,24 @@ public class FilmController {
         return "films/ajoutFilm";
     }
 
+    @RequestMapping("/movie/edit")
+    public String movieEdit(Model model){
+        Realisateur realisateur = new Realisateur(1, "mark", "mark");
+        Acteur acteur1 = new Acteur(1, "jean", "jean");
+        Acteur acteur2 = new Acteur(2, "jean1", "jean1");
+        Acteur acteur3 = new Acteur(3, "jean2", "jean2");
+        List<Acteur> acteurList = new ArrayList<>();
+        acteurList.add(acteur1);
+        acteurList.add(acteur2);
+        acteurList.add(acteur3);
 
+        Categorie categorie = new Categorie(1, "test");
+
+        Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50,"MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, acteurList, categorie);
+        model.addAttribute("movie", film);
+
+        return "edit-movie";
+    }
 
     @PostMapping("/film/ajout")
     public String traitFormulaire( @ModelAttribute("film") Film film,

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <body
+    class="overflow-x-hidden font-body text-jacarta-500 dark:bg-jacarta-900"
+    itemscope
+  >
+
+  <section class="bg-secondary-500 poster pt-4 relative text-opacity-60 text-white sm:px-4">
+
+    <header th:replace="fragments/headermin :: head"> </header>
+
+    <div class="container mx-auto pb-36 pt-16 px-4 relative">
+      <div class="-mx-4 flex flex-wrap items-center space-y-6 lg:space-y-0">
+        <div class="flex-1 px-4">
+          <h1 class="text-4xl font-bold" itemprop="name">
+            <span th:text="${movie.getTitre()}"></span>
+          </h1>
+          <div class="flex items-center space-x-2">
+            <span class="text-sm" itemprop="datePublished">
+              <span th:text="${movie.getDateSortie()}"></span>
+            </span>
+            <span class="text-sm" itemprop="duration">
+              <span th:text="${movie.getDuree()}"></span>
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 px-4">
+          <div class="flex items-center justify-end space-x-4">
+            <a
+              class="bg-primary-500 hover:bg-primary-600 px-4 py-2 rounded text-sm"
+              href="/movies"
+              >Back</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer th:replace="fragments/footer :: footer"></footer>
+    <!-- JS Scripts -->
+    <script src="./js/app.bundle.js"></script>
+  </body>
+</html>
