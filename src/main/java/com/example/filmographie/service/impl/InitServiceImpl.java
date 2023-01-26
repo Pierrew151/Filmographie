@@ -51,7 +51,7 @@ public class InitServiceImpl implements InitService {
         Realisateur realisateur = new Realisateur(1, "mark", "mark");
         realisateurRepository.save(realisateur);
 
-        Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50,"MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, listActeur, listCategorie.get(0));
+        Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50, "https://source.unsplash.com/random/200x200?sig=1","MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, listActeur, listCategorie.get(0));
         filmRepository.save(film);
 
     }

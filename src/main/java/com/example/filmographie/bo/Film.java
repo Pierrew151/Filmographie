@@ -42,6 +42,18 @@ public class Film {
         this.categorie = categorie;
     }
 
+    public Film(Integer id, String titre, Date dateSortie, int duree, String image, String description, Realisateur realisateur, List<Acteur> acteurs, Categorie categorie) {
+        this.id = id;
+        this.titre = titre;
+        this.dateSortie = dateSortie;
+        this.duree = duree;
+        this.image = image;
+        this.description = description;
+        this.realisateur = realisateur;
+        this.acteurs = acteurs;
+        this.categorie = categorie;
+    }
+
     public Film() {
 
     }
