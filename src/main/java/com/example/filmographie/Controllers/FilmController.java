@@ -18,17 +18,17 @@ public class FilmController {
 
     private FilmService filmService;
 
-    public FilmController(FilmService filmService){
+    public FilmController(FilmService filmService) {
         this.filmService = filmService;
     }
 
     @ModelAttribute("films")
-    public List<Film> getPersonnes(){
+    public List<Film> getPersonnes() {
         return new ArrayList<>();
     }
 
     @RequestMapping("/film/ajout")
-    public String ajoutFilm(Model model){
+    public String ajoutFilm(Model model) {
         Realisateur realisateur = new Realisateur(1, "mark", "mark");
         Acteur acteur1 = new Acteur(1, "jean", "jean");
         Acteur acteur2 = new Acteur(2, "jean1", "jean1");
@@ -40,23 +40,25 @@ public class FilmController {
 
         Categorie categorie = new Categorie(1, "test");
 
-        Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50,"MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, acteurList, categorie);
+        Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50, "MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, acteurList, categorie);
         model.addAttribute("film", film);
 
         return "films/ajoutFilm";
     }
 
     @RequestMapping("/movie/{id}")
-    public String movieEdit(@PathVariable String id, Model model){
-        var film = filmService.getFilm(Integer.parseInt(id));
-        model.addAttribute("movie", film);
-
-        return "edit-movie";
+    public String movieDetails(@PathVariable String id, Model model) {
+        if (id != null) {
+            var film = filmService.getFilm(Integer.parseInt(id));
+            model.addAttribute("movie", film);
+            return "edit-movie";
+        }
+        return "home";
     }
 
     @PostMapping("/film/ajout")
-    public String traitFormulaire( @ModelAttribute("film") Film film,
-                                   @ModelAttribute("films") List<Film> films
+    public String traitFormulaire(@ModelAttribute("film") Film film,
+                                  @ModelAttribute("films") List<Film> films
     ) {
 
         films.add(film);
