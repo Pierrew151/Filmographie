@@ -18,6 +18,7 @@ public class MainController {
     @RequestMapping("/")
     public String index(Model model) {
         var films = filmService.getListFilm();
+        model.addAttribute("films", films);
         return "home";
     }
 

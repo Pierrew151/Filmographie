@@ -121,4 +121,6 @@ public class Film {
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
+
+
 }

@@ -45,4 +45,8 @@ public abstract class Personne {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
+    public String getShortenName(){
+        return nom.substring(0, 1).toUpperCase() + nom.substring(1).toLowerCase() + " " + prenom;
+    }
 }
