@@ -2,6 +2,7 @@ package com.example.filmographie.Controllers.converter;
 
 import com.example.filmographie.bo.Film;
 import com.example.filmographie.bo.Realisateur;
+import com.example.filmographie.repositories.RealisateurRepository;
 import com.example.filmographie.service.FilmService;
 import com.example.filmographie.service.RealisateurService;
 import com.example.filmographie.service.impl.FilmServiceImpl;
@@ -14,16 +15,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class StringToRealisateurConverter implements Converter<String, Realisateur> {
 
-    private RealisateurServiceImpl service;
+    private RealisateurRepository realisateurRepository;
 
     @Autowired
-    public void setRealisateurService(RealisateurServiceImpl service) {
-        this.service = service;
+    public void setRealisateurService(RealisateurRepository realisateurRepository) {
+        this.realisateurRepository = realisateurRepository;
     }
 
     @Override
     public Realisateur convert(String id) {
         Integer theid = Integer.parseInt(id);
-        return service.getMapRealisateurs().get(theid);
+        return realisateurRepository.getReferenceById(Long.valueOf(theid));
     }
 }

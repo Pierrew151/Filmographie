@@ -9,6 +9,7 @@ import com.example.filmographie.service.RealisateurService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class FilmController {
     private FilmService filmService;
     private CategorieService categorieService;
     private RealisateurService realisateurService;
+
 
     public FilmController(FilmService filmService, CategorieService categorieService, RealisateurService realisateurService) {
         this.filmService = filmService;
@@ -47,9 +49,11 @@ public class FilmController {
 
     @PostMapping("/film/ajout")
     public String ajoutFilm(@Valid @ModelAttribute("film") Film film) {
+
         filmService.save(film);
-        return "home";
+        return "redirect:/";
     }
+
     @GetMapping("/film/ajout")
     public String traitFormulaire(
             Model model
@@ -61,7 +65,7 @@ public class FilmController {
 
         model.addAttribute("categories", categories);
         model.addAttribute("realisateurs", realisateurs);
-
+        model.addAttribute("film", new Film());
         return "films/ajoutFilm";
     }
 }
