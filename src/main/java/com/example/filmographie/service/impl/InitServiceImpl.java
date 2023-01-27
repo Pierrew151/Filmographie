@@ -51,8 +51,12 @@ public class InitServiceImpl implements InitService {
         Realisateur realisateur = new Realisateur(1, "mark", "mark");
         realisateurRepository.save(realisateur);
 
-        Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50, "https://source.unsplash.com/random/200x200?sig=1","MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, listActeur, listCategorie.get(0));
-        filmRepository.save(film);
+        List<Film> listFilm = new ArrayList<>();
+        listFilm.add(new Film(1, "test", Date.valueOf("2023-01-25"), 50, "https://source.unsplash.com/random/1000x1000?sig=1","MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, listActeur, listCategorie.get(0)));
+        listFilm.add(new Film(2, "testDeux", Date.valueOf("2022-01-25"), 150, "https://source.unsplash.com/random/1000x1000?sig=2","zefezfzfeg", realisateur, listActeur, listCategorie.get(0)));
+        listFilm.add(new Film(3, "testTrois", Date.valueOf("2021-01-25"), 200, "https://source.unsplash.com/random/1000x1000?sig=3","yukykfgn", realisateur, listActeur, listCategorie.get(0)));
+        listFilm.add(new Film(4, "testQuatre", Date.valueOf("2020-01-25"), 250, "https://source.unsplash.com/random/1000x1000?sig=4","mugkfyuffjugj", realisateur, listActeur, listCategorie.get(0)));
+        filmRepository.saveAll(listFilm);
 
     }
 }
