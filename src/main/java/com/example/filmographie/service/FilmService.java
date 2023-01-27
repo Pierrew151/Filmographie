@@ -10,4 +10,6 @@ public interface FilmService {
 
     List<Film> getListFilm();
     Map<Integer, Film> getMapFilm();
+
+    Film getFilm(int id);
 }

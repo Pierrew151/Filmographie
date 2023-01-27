@@ -35,4 +35,12 @@ public class FilmServiceImpl implements FilmService {
     public Map<Integer, Film> getMapFilm() {
         return mapFilm;
     }
+
+    @Override
+    public Film getFilm(int id) {
+        if(id != 0){
+            return filmRepository.getReferenceById(Long.valueOf(id));
+        }
+        return null;
+    }
 }
