@@ -1,21 +1,23 @@
 package com.example.filmographie.Controllers;
 
-import com.example.filmographie.bo.Acteur;
-import com.example.filmographie.bo.Categorie;
-import com.example.filmographie.bo.Film;
-import com.example.filmographie.bo.Realisateur;
+
+import com.example.filmographie.service.FilmService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class MainController {
+    private FilmService filmService;
+
+    public MainController(FilmService filmService) {
+        this.filmService = filmService;
+    }
+
     @RequestMapping("/")
-    public String index() {
+    public String index(Model model) {
+        var films = filmService.getListFilm();
         return "home";
     }
 
