@@ -46,8 +46,7 @@ public class FilmController {
 
 
     @PostMapping("/film/ajout")
-    public String ajoutFilm(@ModelAttribute("film") Film film) {
-        System.out.println(film.getImage().toString());
+    public String ajoutFilm(@Valid @ModelAttribute("film") Film film) {
         filmService.save(film);
         return "home";
     }
@@ -62,8 +61,6 @@ public class FilmController {
 
         model.addAttribute("categories", categories);
         model.addAttribute("realisateurs", realisateurs);
-
-        model.addAttribute("film", new Film());
 
         return "films/ajoutFilm";
     }

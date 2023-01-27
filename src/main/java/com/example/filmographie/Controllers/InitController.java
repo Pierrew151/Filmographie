@@ -1,8 +1,6 @@
 package com.example.filmographie.Controllers;
 
-import com.example.filmographie.repositories.ActeurRepository;
 import com.example.filmographie.service.InitService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,6 +14,6 @@ public class InitController {
     @RequestMapping("/init")
     public String init() {
         initService.init();
-        return "home";
+        return "redirect:/";
     }
 }
