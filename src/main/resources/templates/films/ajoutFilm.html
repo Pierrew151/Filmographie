@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <title>Ajouter un film</title>
-  </head>
-  <body>
-      <form th:action="@{/film/ajout}" th:object=${film} method="post">
-        <label for="titreInput">Titre :</label>
-        <input type="text" th:field="*{titre}" id="titreInput" required>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un film</title>
+</head>
+<body>
+<form th:action="@{/film/ajout}" th:object="${film}" method="post">
+    <label for="titreInput">Titre :</label>
+    <input type="text" id="titreInput" required>
 
 
-        <label for="dateInput">Date de sortie :</label>
-        <input type="date" th:field="*{dateSortie}" id="dateInput" required>
+    <label for="dateInput">Date de sortie :</label>
+    <input type="date" id="dateInput" required>
 
-        <label for="dureeInput">Durée :</label>
-        <input type="number" th:field="*{duree}" id="dureeInput" required>
+    <label for="dureeInput">Durée :</label>
+    <input type="number" id="dureeInput" required>
 
-        <label for="descriptionInput">Description :</label>
-        <input type="text" th:field="*{description}" id="descriptionInput" required>
+    <label for="descriptionInput">Description :</label>
+    <input type="text" id="descriptionInput" required>
 
-        <label for="realisateur">Realisateur :</label>
-        <select th:field="*{realisateur}" id="realisateur" required>
-          <option th:each="realisateur: ${@realisateurs}" th:value="${realisateur.id}" th:text="${realisateur.nom}"></option>
-        </select>
+    <label for="imageInput">Image :</label>
+    <input type="text" id="imageInput" required>
 
-        <!--<label for="acteur">Acteur :</label>
-        <select th:field="*{acteurs}" id="acteur" required>
-          <option th:each="acteurs: ${@acteurs}" th:value="${acteur.id}" th:text="${acteur.nom}"></option>
-        </select>-->
+    <label for="realisateur">Realisateur :</label>
+    <select th:field="*{realisateurs}" id="realisateur" required>
+        <option th:each="realisateur: ${@realisateurs}" th:value="${realisateur.id}"
+                th:text="${realisateur.nom}"></option>
+    </select>
 
-        <label for="categorie">Categorie :</label>
-        <select th:field="*{categorie}" id="categorie" required>
-          <option th:each="categorie: ${@categories}" th:value="${categorie.id}" th:text="${categorie.nom}"></option>
-        </select>
+    <!--<label for="acteur">Acteur :</label>
+    <select th:field="*{acteurs}" id="acteur" required>
+      <option th:each="acteurs: ${@acteurs}" th:value="${acteur.id}" th:text="${acteur.nom}"></option>
+    </select>-->
 
-        <button type="submit">Ajouter</button>
-      </form>
+    <label for="categorie">Categorie :</label>
+    <select th:field="*{categories}" id="categorie" required>
+        <option th:each="categorie: ${@categories}" th:value="${categorie.id}" th:text="${categorie.nom}"></option>
+    </select>
+
+    <button type="submit">Ajouter</button>
+</form>
 
 
-
-
-      <h1>Liste des films :</h1>
-      <table>
-        <tr class="theader"><td>Titre</td><td>duree</td><td>description</td></tr>
-        <tr th:each="film: ${films}">
-          <td th:text="${film.titre}" />
-          <td th:text="${film.duree}" />
-          <td th:text="${film.description}"></td>
-        </tr>
-      </table>
-  </body>
+<h1>Liste des films :</h1>
+<table>
+    <tr class="theader">
+        <td>Titre</td>
+        <td>duree</td>
+        <td>description</td>
+    </tr>
+    <tr th:each="film: ${films}">
+        <td th:text="${film.titre}"/>
+        <td th:text="${film.duree}"/>
+        <td th:text="${film.description}"></td>
+    </tr>
+</table>
+</body>
 </html>

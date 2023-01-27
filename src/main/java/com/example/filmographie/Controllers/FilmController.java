@@ -1,15 +1,16 @@
 package com.example.filmographie.Controllers;
 
-import com.example.filmographie.bo.Acteur;
 import com.example.filmographie.bo.Categorie;
 import com.example.filmographie.bo.Film;
 import com.example.filmographie.bo.Realisateur;
+import com.example.filmographie.service.CategorieService;
 import com.example.filmographie.service.FilmService;
+import com.example.filmographie.service.RealisateurService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +18,13 @@ import java.util.List;
 public class FilmController {
 
     private FilmService filmService;
+    private CategorieService categorieService;
+    private RealisateurService realisateurService;
 
-    public FilmController(FilmService filmService) {
+    public FilmController(FilmService filmService, CategorieService categorieService, RealisateurService realisateurService) {
         this.filmService = filmService;
+        this.categorieService = categorieService;
+        this.realisateurService = realisateurService;
     }
 
     @ModelAttribute("films")
@@ -27,24 +32,7 @@ public class FilmController {
         return new ArrayList<>();
     }
 
-    @RequestMapping("/film/ajout")
-    public String ajoutFilm(Model model) {
-        Realisateur realisateur = new Realisateur(1, "mark", "mark");
-        Acteur acteur1 = new Acteur(1, "jean", "jean");
-        Acteur acteur2 = new Acteur(2, "jean1", "jean1");
-        Acteur acteur3 = new Acteur(3, "jean2", "jean2");
-        List<Acteur> acteurList = new ArrayList<>();
-        acteurList.add(acteur1);
-        acteurList.add(acteur2);
-        acteurList.add(acteur3);
 
-        Categorie categorie = new Categorie(1, "test");
-
-        Film film = new Film(1, "test", Date.valueOf("2023-01-25"), 50, "MKSJGSKG<SLKGHSLKEHGPKGEJG", realisateur, acteurList, categorie);
-        model.addAttribute("film", film);
-
-        return "films/ajoutFilm";
-    }
 
     @RequestMapping("/movie/{id}")
     public String movieDetails(@PathVariable String id, Model model) {
@@ -56,12 +44,26 @@ public class FilmController {
         return "home";
     }
 
-    @PostMapping("/film/ajout")
-    public String traitFormulaire(@ModelAttribute("film") Film film,
-                                  @ModelAttribute("films") List<Film> films
-    ) {
 
-        films.add(film);
+    @PostMapping("/film/ajout")
+    public String ajoutFilm(@ModelAttribute("film") Film film) {
+        System.out.println(film.getImage().toString());
+        filmService.save(film);
+        return "home";
+    }
+    @GetMapping("/film/ajout")
+    public String traitFormulaire(
+            Model model
+    ) {
+        List<Categorie> categories = new ArrayList<>();
+        categories = categorieService.getListCategorie();
+        List<Realisateur> realisateurs = new ArrayList<>();
+        realisateurs = realisateurService.getListRealisateurs();
+
+        model.addAttribute("categories", categories);
+        model.addAttribute("realisateurs", realisateurs);
+
+        model.addAttribute("film", new Film());
 
         return "films/ajoutFilm";
     }

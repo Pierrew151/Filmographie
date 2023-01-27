@@ -1,6 +1,7 @@
 package com.example.filmographie.bo;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.sql.Date;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Film {
     private String titre;
     private Date dateSortie;
     private int duree;
+    @NotNull
     private String image;
     private String description;
     @ManyToOne

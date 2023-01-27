@@ -12,4 +12,6 @@ public interface FilmService {
     Map<Integer, Film> getMapFilm();
 
     Film getFilm(int id);
+
+   void save(Film film);
 }

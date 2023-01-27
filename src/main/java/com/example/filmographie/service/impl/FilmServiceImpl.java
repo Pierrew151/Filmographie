@@ -43,4 +43,9 @@ public class FilmServiceImpl implements FilmService {
         }
         return null;
     }
+
+    @Override
+    public void save(Film film) {
+            filmRepository.save(film);
+    }
 }
