@@ -9,13 +9,14 @@
 <body class="text-gray-500">
   <main>
 
-    <header th:replace="fragments/header :: head"> </header>
+    <section class="bg-secondary-500 poster pt-4 pb-4 relative text-opacity-60 text-white sm:px-4">
+      <header th:replace="fragments/headermin :: head"></header>
+    </section>
 
     <section th:replace="fragments/movie-list :: mlist"></section>
 
     <footer th:replace="fragments/footer :: footer"></footer>
 
   </main>
-
 </body>
 </html>

@@ -1,11 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Movie details</title>
-</head>
+<html lang="en" dir="ltr">
 
-<body>
+<body
+        class="overflow-x-hidden font-body text-jacarta-500 dark:bg-jacarta-900"
+        itemscope
+>
 
+<section class="bg-secondary-500 poster pt-4 pb-4 relative text-opacity-60 text-white sm:px-4">
+    <header th:replace="fragments/headermin :: head"></header>
+</section>
+
+<div class="bg-secondary-500 text-gray-400 sm:px-4">
+    <div class="mx-auto pb-36 pt-16 px-4 relative">
+        <div class="-mx-4 flex flex-wrap items-center space-y-6 lg:space-y-0">
+            <div class="container content-center flex-1 px-4">
+                <div class="columns-2">
+                    <div>
+                        <h1 class="mb-4 text-3xl font-extrabold text-white md:text-5xl lg:text-6xl">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r to-sky-200 from-sky-300"
+                          th:text="${movie.getTitre()}">
+                    </span>
+                            <span> -</span>
+                            <span th:text="${movie.realisateur.getShortenName()}"/>
+                        </h1>
+                        <span class="text-sm text-gray-400" itemprop="datePublished">
+                    <span th:text="${movie.getDateSortie()}"></span>
+                    </span>
+                        <br>
+                        <br>
+                        <p class="text-lg font-normal text-gray-200 lg:text-xl dark:text-gray-400"
+                           th:text="${movie.description}"></p>
+                        <div class="flex items-center space-x-2">
+                        <span class="text-sm" itemprop="duration">
+                      <span th:text="${movie.getDuree()}"></span>
+                    </span>
+                        </div>
+                    </div>
+
+                    <img th:src="${movie.image}">
+                </div>
+            </div>
+            <div class="flex-1 px-4">
+                <div class="flex items-center justify-end space-x-4">
+                    <a
+                            class="bg-primary-500 hover:bg-primary-600 px-4 py-2 rounded text-sm"
+                            href="/movies"
+                    >Back</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<!-- JS Scripts -->
+<script src="./js/app.bundle.js"></script>
 </body>
 </html>

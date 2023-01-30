@@ -41,7 +41,7 @@ public class FilmController {
         if (id != null) {
             var film = filmService.getFilm(Integer.parseInt(id));
             model.addAttribute("movie", film);
-            return "edit-movie";
+            return "details";
         }
         return "home";
     }
