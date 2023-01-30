@@ -15,7 +15,7 @@ public class MainController {
         this.filmService = filmService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping({"/", "/home", "/index"})
     public String index(Model model) {
         var films = filmService.getListFilm();
         model.addAttribute("films", films);
@@ -28,11 +28,18 @@ public class MainController {
         return "edit-movie";
     }
 
-
     @RequestMapping("/login")
     public String login(Model model) {
 
         return "login";
     }
+
+    @RequestMapping("/list")
+    public String list(Model model) {
+        var films = filmService.getListFilm();
+        model.addAttribute("films", films);
+        return "list-movie";
+    }
+
 
 }

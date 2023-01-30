@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<body
+        class="overflow-x-hidden font-body text-jacarta-500 dark:bg-jacarta-900"
+        itemscope
+>
+
+<section class="bg-secondary-500 poster pt-4 pb-4 relative text-opacity-60 text-white sm:px-4">
+    <header th:replace="fragments/headermin :: head"></header>
+</section>
+
+<div class="min-h-screen p-6 bg-secondary-500 text-gray-100 flex items-center justify-center">
+    <div class="container max-w-screen-lg mx-auto">
+        <div>
+            <h2 class="font-semibold text-2xl text-gray-200">Add a movie</h2>
+            <p class="text-gray-300 mb-6">Add whenever movies you want, I don't really give a fuck about that.</p>
+
+            <div class="rounded shadow-lg p-4 px-4">
+                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                    <div class="text-gray-100">
+                        <p class="font-medium text-lg">Movie details</p>
+                        <p>Please fill out all the fields.</p>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1">
+                            <form th:action="@{/film/ajout}" method="post">
+                                <div class="md:col-span-5 mt-2">
+                                    <label for="titreInput">Title</label>
+                                    <input type="text" id="titreInput" th:field="*{film.titre}" required class="h-10 text-gray-900 border mt-1 rounded px-4 w-full bg-gray-50" />
+                                </div>
+
+                                <div class="md:col-span-5 mt-2">
+                                    <label for="dateInput">Release date :</label>
+                                    <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-gray-900" type="date" id="dateInput" th:field="*{film.dateSortie}" required>
+                                </div>
+
+                                <div class="md:col-span-3 mt-2">
+                                    <label for="dureeInput">Length (in minutes) :</label>
+                                    <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-gray-900" type="number" id="dureeInput" th:field="*{film.duree}" required>
+                                </div>
+
+                                <div class="md:col-span-2 mt-2">
+                                    <label for="descriptionInput">Description :</label>
+                                    <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-gray-900" type="text" id="descriptionInput" th:field="*{film.description}" required>
+                                </div>
+
+                                <div class="md:col-span-2 mt-2">
+                                    <label for="imageInput">Image :</label>
+                                    <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 text-gray-900" type="text" id="imageInput" th:field="*{film.image}"  required>
+                                </div>
+
+                                <div class="md:col-span-2 mt-2">
+                                    <label for="realisateur">Realisator :</label>
+                                    <select  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" th:field="*{film.realisateur}"  id="realisateur" required>
+                                        <option th:each="realisateur: ${@realisateurs}" th:value="${realisateur.id}"
+                                                th:text="${realisateur.nom}" ></option>
+                                    </select>
+                                </div>
+
+                                <div class="md:col-span-2 mt-2">
+                                    <label for="categorie">Categorie :</label>
+                                    <select  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" th:field="*{film.categorie}"   id="categorie" required>
+                                        <option th:each="categorie: ${@categories}" th:value="${categorie.id}" th:text="${categorie.nom}" ></option>
+                                    </select>
+                                </div>
+
+                                <div class="md:col-span-2 mt-2">
+                                    <label for="acteur">Acteur :</label>
+                                      <select multiple class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" th:field="*{acteurs}" id="acteur" required>
+                                        <option th:each="acteur: ${@acteurs}" th:value="${acteur.id}" th:text="${acteur.nom}"></option>
+                                      </select>
+                                </div>
+
+
+                                <div class="md:col-span-5 text-right mt-4">
+                                    <div class="inline-flex items-end">
+                                        <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<!-- JS Scripts -->
+<script src="./js/app.bundle.js"></script>
+</body>
+</html>

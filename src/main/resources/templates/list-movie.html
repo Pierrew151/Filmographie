@@ -9,17 +9,14 @@
 <body class="text-gray-500">
   <main>
 
-    <header th:replace="fragments/header :: head"> </header>
+    <section class="bg-secondary-500 poster pt-4 pb-4 relative text-opacity-60 text-white sm:px-4">
+      <header th:replace="fragments/headermin :: head"></header>
+    </section>
 
     <section th:replace="fragments/movie-list :: mlist"></section>
-
-    <div class="text-center">
-      <a href="/list" class="bg-gradient-to-t bg-primary-500 from-primary-500 hover:bg-primary-600 hover:from-primary-600 hover:to-primary-500 inline-block px-6 py-2 rounded text-white to-primary-400">View More</a>
-    </div>
 
     <footer th:replace="fragments/footer :: footer"></footer>
 
   </main>
-
 </body>
 </html>
