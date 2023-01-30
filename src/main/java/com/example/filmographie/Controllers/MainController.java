@@ -28,4 +28,11 @@ public class MainController {
         return "edit-movie";
     }
 
+
+    @RequestMapping("/login")
+    public String login(Model model) {
+
+        return "login";
+    }
+
 }
