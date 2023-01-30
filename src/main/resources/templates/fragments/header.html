@@ -20,7 +20,7 @@
       <div class="-mx-4 flex flex-wrap items-center space-y-6 lg:space-y-0">
         <div class="px-4 w-full lg:w-6/12 xl:w-5/12">
           <div class="bg-secondary-500 p-4 rounded-2xl w-10/12 sm:p-6 md:w-7/12 lg:w-full">
-            <a href="#" class="block group overflow-hidden relative rounded-xl"><img th:src="${films[0].image}" class="w-full" alt="..." width="600" height="600"/><div class="absolute bg-opacity-10 bg-white bottom-0 flex group-hover:bg-opacity-20 inset-x-0 items-center justify-between p-4 text-white sm:px-6">
+            <a th:href="@{/movie/{id}(id=${films[0].id})}" class="block group overflow-hidden relative rounded-xl"><img th:src="${films[0].image}" class="w-full" alt="..." width="600" height="600"/><div class="absolute bg-opacity-10 bg-white bottom-0 flex group-hover:bg-opacity-20 inset-x-0 items-center justify-between p-4 text-white sm:px-6">
               <h2 class="font-bold" th:text="${films[0].titre}"></h2>
               <span class="italic opacity-50" th:text="${films[0].realisateur.getShortenName()}">by </span>
             </div></a>
