@@ -34,6 +34,16 @@
                         <span class="text-sm" itemprop="duration">
                       <span th:text="${movie.getDuree()}"></span>
                     </span>
+                            <br>
+                            <span class="text-sm" itemprop="genre">
+                            <span th:text="${movie.categorie.nom}"></span>
+                                <br>
+                                <span th:each="actor: ${movie.getActeurs()}">
+                                    <span th:text="${actor.getShortenName()}"></span>
+                                </span>
+                            </span>
+                            <br>
+                    </span>
                         </div>
                     </div>
 
