@@ -10,6 +10,8 @@
     <div class="-mx-3 flex flex-wrap gap-y-6 justify-center mb-12">
       <div th:each="film: ${films}" class="px-3 w-full md:w-6/12 lg:w-4/12">
         <div class="bg-opacity-10 bg-white overflow-hidden rounded-xl text-gray-500">
+          <a th:href="@{/movie/{id}(id=${film.id})}" class="block group relative"><img th:src="${film.image}" class="group-hover:opacity-90 w-full" alt="..." width="600" height="600"/><div class="absolute bg-gray-900 bottom-4 gap-2 inline-flex items-center opacity-75 px-2 py-1 right-6 rounded-full text-white">
+          </div></a>
           <div class="px-4 py-6 sm:px-6">
             <div class="flex items-center justify-between">
               <h3 class="font-bold text-xl" th:text="${film.titre}"><a href="#" class="hover:text-primary-100 text-white"></a></h3>
