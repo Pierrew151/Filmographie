@@ -68,4 +68,26 @@ public class FilmController {
         model.addAttribute("film", new Film());
         return "films/ajoutFilm";
     }
+
+    @PostMapping("/movie/add")
+    public String addMovie(@Valid @ModelAttribute("film") Film film) {
+
+        filmService.save(film);
+        return "redirect:/";
+    }
+
+    @GetMapping("/movie/add")
+    public String addMovieForm(
+            Model model
+    ) {
+        List<Categorie> categories = new ArrayList<>();
+        categories = categorieService.getListCategorie();
+        List<Realisateur> realisateurs = new ArrayList<>();
+        realisateurs = realisateurService.getListRealisateurs();
+
+        model.addAttribute("categories", categories);
+        model.addAttribute("realisateurs", realisateurs);
+        model.addAttribute("film", new Film());
+        return "add-movie";
+    }
 }
